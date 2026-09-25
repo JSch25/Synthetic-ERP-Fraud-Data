@@ -3,7 +3,7 @@
 <div align="justify">
 This repository provides synthetic ERP fraud data for the unpublished paper "An Agent-based Approach for Generating Customizable Synthetic ERP Data for Fraud Detection", submitted to ICAART 2027 – 19th International Conference on Agents and Artificial Intelligence.
 
-The dataset was created to address the scarcity of publicly available ERP fraud data. An AI agent simulates both legitimate business processes and fraud cases within configurable organizational and behavioral constraints. The planned process executions are 
+The dataset addresses the scarcity of publicly available ERP fraud data. An AI agent simulates both legitimate business processes and fraud cases within configurable organizational and behavioral constraints. The planned process executions are 
 subsequently carried out in an SAP S/4HANA system to generate realistic ERP transaction data. The dataset accompanying the paper contains regular Procure-to-Pay (P2P) processes, multiple fraud cases, and legitimate process variants generated within the Global 
 Bike Inc. (GBI) model company.
 
@@ -26,6 +26,10 @@ The repository contains the extracted and processed records from the following S
 
 Together, these tables capture the complete execution trace of the generated Procure-to-Pay (P2P) scenarios, including procurement activities, inventory movements, invoices, accounting postings, and master data changes. 
 This enables the reconstruction and analysis of both legitimate business processes and fraud scenarios.
+
+In addition to the SAP data tables, the repository includes the file **post-processing-manifest.yaml**, which provides the ground-truth information required to interpret the generated dataset. For each executed scenario, the document specifies whether it represents a regular Procure-to-Pay (P2P) process, a legitimate P2P variant, or a fraud case. In addition, the manifest contains the complete sequence of process steps executed within each scenario.
+
+Furthermore, the repository also contains the file **object_registry.jsonl**. This document links the generated scenarios and process steps to the corresponding SAP document numbers created during execution. For each process step, the registry records the generated SAP document identifiers, allowing the extracted SAP table records to be connected to the ground-truth labels defined in the post-processing manifest. Furthermore, the registry enables the reconstruction of relationships between individual process steps within a scenario by tracing the business objects passed from one step to another.
 
 
 
